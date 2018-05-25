@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+
+<div class="table" id="table">
+  <div class="table__row table__row--head">
+    <div class="table__cell table__cell--head">Название</div>
+    <div class="table__cell table__cell--head">Расход топлива мл/г</div>
+    <div class="table__cell table__cell--head">Цилиндры</div>
+    <div class="table__cell table__cell--head">Рабочий объём</div>
+    <div class="table__cell table__cell--head">Л.C</div>
+    <div class="table__cell table__cell--head">Вес</div>
+    <div class="table__cell table__cell--head">Ускорение м/c2</div>
+    <div class="table__cell table__cell--head">Год выпуска</div>
+    <div class="table__cell table__cell--head">Производство</div>
+  </div>
+</div>
+<div class="tablle__preloader">
+  <img src="img/preloader.gif" alt="">
+</div>
+</div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+  const table = document.querySelector("#table");
+  const table__preloader = document.querySelector(".tablle__preloader");
+  let rand = 1;
+
+  window.addEventListener('scroll', main);
+  function main() {
+      let scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
+
+      if (scrollHeight - window.innerHeight <= window.pageYOffset) {
+
+        window.removeEventListener("scroll", main);
+        GET('cars')
+      }
+  }
+
+  function GET(url) {
+    let xhr = new XMLHttpRequest();
+    // let rand = Math.floor((Math.random() * 5) + 1);
+    if (rand > 5) {
+      return 'not enought cars';
+    }
+    table__preloader.setAttribute('style','display:block');
+    xhr.open("GET",`${url}-${rand}.json`,true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+              inner(xhr)
+              if (getEverythingRight() === 'we need to get some cars') {
+                GET('cars')
+              }
+              window.addEventListener('scroll', main);
+
+              setTimeout(function(){ table__preloader.setAttribute('style','display:none'); }, 500);
+          }
+    };
+    xhr.send();
+    rand++;
+  }
+
+  function inner(xhr) {
+    let response = JSON.parse(xhr.responseText)
+      let table__row = '',node = '';
+      for (var i = 0; i < response.length; i++) {
+        table__row = '',node = '';
+        for (var prop in response[i]) {
+            node += `<div class="table__cell">${response[i][prop]}</div>`
+        }
+        table__row +=`<div class="table__row">${node}</div>`
+        table.insertAdjacentHTML('beforeend', table__row);
+       }
+  }
+
+  function getEverythingRight() {
+    if (table.clientHeight <= window.innerHeight) {
+      return 'we need to get some cars';
+    }
+  }
+
+  GET("cars");
+});
+</script>
+</body>
+</html>
