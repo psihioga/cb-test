@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-11-11T13:52:09.487Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="1hD55T_nxw1pkYj_2LcD" version="15.6.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-15T09:16:14.669Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="Vw4i60XXWENaR9L3UPtu" version="15.7.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1185" dy="1831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2031" dy="2303" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -104,10 +104,22 @@
           <mxGeometry x="110" y="250" width="550" height="190" as="geometry" />
         </mxCell>
         <mxCell id="fCl1h1IX-KnyHzvw6Qa8-38" value="Еще один возможный ответ:&#xa;{&quot;Status&quot;: &quot;Error&quot;, &quot;Message&quot;: &quot;Search word has to be longer than 2 symbols&quot;}" style="text;whiteSpace=wrap;html=1;fontSize=18;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="1270" y="370" width="550" height="80" as="geometry" />
+          <mxGeometry x="840" y="620" width="550" height="80" as="geometry" />
         </mxCell>
         <mxCell id="fCl1h1IX-KnyHzvw6Qa8-39" value="https://92.63.192.215/api/app/products_seacrh/ - endpoint для поиска товара по артикулю или названию, POST запрос, ожидает &#39;mp_type&#39; - &#39;Ozon/WB&#39;, &#39;mp_id&#39;: id маркетплейса, &#39;search_word&#39;: слово для поиска&#xa;Выдает ту же структуру как и эндпоинт страницы продуктов" style="text;whiteSpace=wrap;html=1;fontSize=18;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="980" y="680" width="550" height="130" as="geometry" />
+          <mxGeometry x="130" y="600" width="550" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="je1JNMOyjuV9sEbknqPQ-0" value="/api/account/account_settings/  - так же принимает параметр &#39;name&#39; - название маркетплейса" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2320" y="-110" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="je1JNMOyjuV9sEbknqPQ-1" value="&lt;font style=&quot;font-size: 18px&quot;&gt;/api/app/product/ - endpoint для второй страницы товаров, POST запрос, ожидает {&#39;mp_id&#39;: marketplace_id(int), &quot;mp_type&quot;: &quot;WB/Ozon&quot;, &quot;orders_from&quot;: int, &quot;orders_to&quot;: int, &quot;date_from&quot;: date, &quot;date_to&quot;: date, &quot;product_id&quot;: product_id}&lt;br&gt;если указать orderss_to&#39;: 0, то выдаст до последнего заказа&lt;br&gt;В ответ дает&amp;nbsp;&lt;br&gt;{&quot;Status&quot;: &quot;&quot;, &quot;Message&quot;: &quot;{&quot;orders&quot;: orders}&quot;}&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1518" y="-430" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="je1JNMOyjuV9sEbknqPQ-2" value="/api/account/create_marketplace/ - endpoint для создания маркетплейса, ожидает &quot;mp_type&quot;: &quot;WB/Ozon&quot;, &quot;name&quot;: название&#xa;В ответ дает &quot;id&quot;, &quot;mp_type&quot;, &quot;name&quot;" style="text;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2320" y="-20" width="550" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="je1JNMOyjuV9sEbknqPQ-3" value="/api/account/change_settings/ - endpoint для для изменения каких-то общих настроек (пока что таймзона и колво дней для подсчета средней доставки и комиссии), ожидает &quot;timezone&quot;: int, &quot;average_time&quot;: int  &#xa;В ответ дает ничего, но изменю на просто сообщение типа &quot;Successfully changed ...&quot;" style="text;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2310" y="90" width="550" height="150" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
